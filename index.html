@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <style>
+      #calendar {
+        text-align: center;
+      }
+      #days{
+        margin: 20px;
+      }
+      #daysTable{
+        text-align: center;
+        margin: auto;
+      }
+      .cells{
+        border: solid 1px black;
+        width:15px
+      }
+    </style>
+  </head>
+  <body>
+    <div id="calendar">
+      <div id="navigationsButtons">
+        <button id="prevMonth">Предыдущий месяц</button>
+        <button id="nextMonth">Следующий месяц</button>
+      </div>
+      <p id="yearAndMonth">
+        <span id="year"></span>
+        <span id="month"></span>
+      </p>
+      <table id="daysTable">
+        <tr id="daysTr">
+
+        </tr>
+      </table>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
