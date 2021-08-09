@@ -1,4 +1,4 @@
-const month = ['Январь','Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Откябрь', 'Ноябрь', 'Декабрь'];
+const month = ['Январь','Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 const day = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
 const yearAndMonth = document.querySelector('#yearAndMonth')
 const daysTr = document.querySelector('#daysTr')
@@ -6,29 +6,30 @@ const buttonNextMonth = document.querySelector('#nextMonth')
 const buttonPrevMonth = document.querySelector('#prevMonth')
 const yearSpan = document.querySelector('#year')
 const monthSpan = document.querySelector('#month')
-const date = new Date();
 
-//------------------------------------
-//Если обернуть в фунцию и повесить листенер "load" на window или document, показывает что innerHTML пустой блять. Хотя на странице все есть. И не получается дальше его обрабатывать.
+document.addEventListener("DOMContentLoaded", function () {
+    checkDateForCorrectness()
+    highLightСurrentDay(Number(yearSpan.innerHTML), month.indexOf(monthSpan.innerHTML), Number(date.getDate()))
+})
+
+const date = new Date();
 yearSpan.innerHTML = date.getFullYear()
 monthSpan.innerHTML = month[Number(date.getMonth())]
-//------------------------------------
 
-checkDateForCorrectness()
-highLightСurrentDay(Number(yearSpan.innerHTML), month.indexOf(monthSpan.innerHTML), Number(date.getDate()))
 
 
 buttonNextMonth.addEventListener('click',  nextDate)
 // Увеличивает месяц на 1
 function nextMonth() {
     let monthNum =  month.indexOf(monthSpan.innerHTML)
-    monthNum =+ monthNum + 1
+    monthNum++
     monthSpan.innerHTML = month[monthNum]
     
 }
 //Увеличивает год на 1
 function nextYear() {
-    let yearNum = Number(yearSpan.innerHTML) + 1
+    let yearNum = Number(yearSpan.innerHTML)
+    yearNum++
     yearSpan.innerHTML = yearNum
 }
 //Меняет месяц и если нужно год на следующий
@@ -51,13 +52,14 @@ buttonPrevMonth.addEventListener('click', prevDate)
 //Уменьшает месяц на 1
 function prevMonth() {
     let monthNum =  month.indexOf(monthSpan.innerHTML)
-    monthNum =+ monthNum - 1
+    monthNum--
     monthSpan.innerHTML = month[monthNum]
     
 }
 //Уменьшает год на 1
 function prevYear() {
-    let yearNum = Number(yearSpan.innerHTML) - 1
+    let yearNum = Number(yearSpan.innerHTML)
+    yearNum--
     yearSpan.innerHTML = yearNum
 }
 //Меняет месяц и если нужно год на предыдущий
